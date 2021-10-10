@@ -3,8 +3,8 @@
 
 const uint16_t THERM_ADDR_0 = 0x380;
 
-const uint8_t NUM_THERMS = 1;
-const uint8_t ADC_PINS[NUM_THERMS] = {14};
+const uint8_t NUM_THERMS = 4;
+const uint8_t ADC_PINS[NUM_THERMS] = {14, 15, 16, 17};
 
 static const byte MCP2515_CS  = 10 ; // CS input of MCP2515 (adapt to your design) 
 static const byte MCP2515_INT =  3 ; // INT output of MCP2515 (adapt to your design)
@@ -29,10 +29,11 @@ void setup () {
   //--- Start serial
   Serial.begin (9600) ;
   //--- Wait for serial (blink led at 10 Hz during waiting)
-  while (!Serial) {
-    delay (50) ;
-    digitalWrite (LED_BUILTIN, !digitalRead (LED_BUILTIN)) ;
-  }
+  //
+  //while (!Serial) {
+  //  delay (50) ;
+  //  digitalWrite (LED_BUILTIN, !digitalRead (LED_BUILTIN)) ;
+  //}
   //--- Begin SPI
   SPI.begin () ;
   //--- Configure ACAN2515
