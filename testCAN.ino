@@ -39,7 +39,7 @@ ACAN2515 can (MCP2515_CS, SPI, MCP2515_INT) ;
 //  MCP2515 Quartz: adapt to your design
 //——————————————————————————————————————————————————————————————————————————————
 
-static const uint32_t QUARTZ_FREQUENCY = 16UL * 1000UL * 1000UL ; // 16 MHz
+static const uint32_t QUARTZ_FREQUENCY = 8UL * 1000UL * 1000UL ; // 8 MHz
 
 //——————————————————————————————————————————————————————————————————————————————
 //   SETUP
@@ -100,6 +100,22 @@ static uint32_t gSentFrameCount = 0 ;
 
 void loop () {
   CANMessage frame ;
+  frame.id = 0x77F;
+  frame.len = 8;
+  uint8_t can_counter = 0;
+  
+  for (uint8_t i = 0; i < 100; i++) {
+    
+    //Keep first byte by doing bitwise AND to first byte, increment can_counter
+    frame.data[can_counter++] = 1 & 0xFF;
+    //Keep second byte by shifting all bits right 
+    frame.data[can_counter++] = (1 >> 8) & 0xFF;
+    //Keep third byte by shifting all bits right 
+    frame.data[can_counter++] = (2 >> 16) & 0xFF;
+   
+    if (can_counter > 7) break; //8 byte CAN cap
+  }
+  
   if (gBlinkLedDate < millis ()) {
     gBlinkLedDate += 2000 ;
     digitalWrite (LED_BUILTIN, !digitalRead (LED_BUILTIN)) ;
