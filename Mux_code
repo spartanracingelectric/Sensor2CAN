@@ -41,6 +41,7 @@ void loop(){
 float readMux(int channel){
   int controlPin[] = {s0, s1, s2, s3};
 
+//from the left = S0 
   int muxChannel[16][4]={
     {0,0,0,0}, //channel 0
     {1,0,0,0}, //channel 1
