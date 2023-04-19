@@ -21,11 +21,10 @@ A.k.a the Sensor2CAN.<br/>
 3. Install the [Arduino IDE](https://www.arduino.cc/en/software) **Make sure to install version 1.8.19**
 4. Within the Arduino IDE `Tools->Manage Libraries...`, install all needed libraries
 5. Configure Arduino IDE board to the Raspberry Pi Pico.
-    1. ![](media/boardsetup.png)
 6. Upload the sketch!
 
 ## SR-14 Sensor2CAN Team
-_Shinika Balasundar_, Software Lead, Integration(CANBus/DAQ communication)<br/>
+_Shinika Balasundar_, Software Lead, Integration (CANBus/DAQ communication)<br/>
 _Aryan Saini_, Project Lead, Hardware (Schematic and PCB design, PCBA) & Software Validation<br/>
 _Rudy Saurez Serrano_, Project Designer, Hardware (Schematic and PCB design, PCBA)<br/>
 _Novel Alam_, Project Designer, Software (ADC/MUX programming)<br/>
