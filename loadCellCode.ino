@@ -6,18 +6,24 @@ int sensorPin1 = A0;
 int sensorPin2 = A1;
 int sensorPin3 = A2;
 int sensorPin4 = A3;
+int sensorPin5 = A4;
+int sensorPin6 = A5;
 
 float voltageOut1;
 float voltageOut2;
 float voltageOut3;
 float voltageOut4;
+float voltageOut5;
+float voltageOut6;
 
 float force1;
 float force2;
 float force3;
 float force4;
+float force5;
+float force6;
 
-int sensorValue1 = 0, sensorValue2 = 0, sensorValue3 = 0, sensorValue4 = 0;
+int sensorValue1 = 0, sensorValue2 = 0, sensorValue3 = 0, sensorValue4 = 0, sensorValue5 = 0, sensorValue6 = 0;
 
 void setup() {
   Serial.begin(9600);
@@ -44,6 +50,16 @@ void loop() {
   voltageOut4 = sensorValue4 * (5.0 / 1023.0);
   force4 = voltageOut4 * 50;
 
+  // Read sensor 5
+  sensorValue5 = analogRead(sensorPin5);
+  voltageOut5 = sensorValue5 * (5.0 / 1023.0);
+  force5 = voltageOut5 * 50;
+
+  // Read sensor 6
+  sensorValue6 = analogRead(sensorPin6);
+  voltageOut6 = sensorValue6 * (5.0 / 1023.0);
+  force6 = voltageOut6 * 50;
+
   Serial.print("Force 1: ");
   Serial.print(force1);
   Serial.print(" lbs, Force 2: ");
@@ -52,7 +68,11 @@ void loop() {
   Serial.print(force3);
   Serial.print(" lbs, Force 4: ");
   Serial.print(force4);
+  Serial.print(" lbs, Force 5: ");
+  Serial.print(force5);
+  Serial.print(" lbs, Force 6: ");
+  Serial.print(force6);
   Serial.println(" lbs");
 
-  delay(100);
+  delay(1);
 }
