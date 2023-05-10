@@ -27,7 +27,7 @@ void loop()
   double sensorValue1 = analogRead(0);
   double voltageOut1 = sensorValue1 * (5.0 / 1023.0);
 
-  canMsg.can_id  = 0x036;           
+  canMsg.can_id  = 0x710;           
   canMsg.can_dlc = 8;               
   canMsg.data[0] = voltageOut1*100;  
   Serial.println(voltageOut1);
